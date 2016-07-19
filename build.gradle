@@ -3,7 +3,7 @@ buildscript {
     jcenter()
   }
   dependencies {
-    classpath 'org.xtend:xtend-gradle-plugin:0.4.14'
+    classpath 'org.xtext:xtext-gradle-plugin:1.0.2'
     classpath 'com.github.oehme.sobula:sobula:0.6.6'
     classpath "com.netflix.nebula:nebula-project-plugin:2.2.1"
   }
@@ -49,10 +49,10 @@ subprojects {
 }
 
 configure(subprojects.findAll{p-> !p.name.contains('protocol')}) {
-  apply plugin: 'org.xtend.xtend'
+  apply plugin: 'org.xtext.xtend'
 
   dependencies {
-    compile 'org.eclipse.xtend:org.eclipse.xtend.lib:2.9.0'
+    compile 'org.eclipse.xtend:org.eclipse.xtend.lib:2.9.1'
   }
 }
 
