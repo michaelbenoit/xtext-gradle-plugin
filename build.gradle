@@ -11,6 +11,12 @@ buildscript {
 }
 
 allprojects {
+  apply plugin: "io.spring.dependency-management"
+  dependencyManagement {
+    imports {
+      mavenBom "org.eclipse.xtext:xtext-dev.bom:2.16.0-SNAPSHOT"
+    }
+  }
   apply plugin: 'com.github.oehme.sobula.plugin-release'
 
   group = "org.xtext"
@@ -38,12 +44,7 @@ allprojects {
 subprojects {
   apply plugin: 'eclipse'
   apply plugin: 'java'
-  apply plugin: "io.spring.dependency-management"
-  dependencyManagement {
-    imports {
-      mavenBom "org.eclipse.xtext:xtext-dev.bom:2.16.0-SNAPSHOT"
-    }
-  }
+  
 
   sourceCompatibility = 1.8
 
