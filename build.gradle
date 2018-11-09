@@ -6,6 +6,7 @@ buildscript {
     classpath 'org.xtext:xtext-gradle-plugin:2.0.2'
     classpath 'com.github.oehme.sobula:sobula:0.6.7'
     classpath 'com.netflix.nebula:nebula-project-plugin:4.0.1'
+    classpath "io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE"
   }
 }
 
@@ -27,6 +28,9 @@ allprojects {
   bintray.pkg.version.mavenCentralSync.user = "xtext.team"
 
   repositories {
+    maven {
+      url 'https://projects.itemis.de/nexus/content/groups/xtext-bom'
+    }
     jcenter()
   }
 }
@@ -34,6 +38,12 @@ allprojects {
 subprojects {
   apply plugin: 'eclipse'
   apply plugin: 'java'
+  apply plugin: "io.spring.dependency-management"
+  dependencyManagement {
+    imports {
+      mavenBom "org.eclipse.xtext:xtext-dev.bom:2.16.0-SNAPSHOT"
+    }
+  }
 
   sourceCompatibility = 1.8
 
