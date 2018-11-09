@@ -33,6 +33,9 @@ abstract class AbstractIntegrationTest {
 	
 	protected def CharSequence getRepositories() '''
 		repositories {
+			maven {
+      			url 'https://projects.itemis.de/nexus/content/groups/xtext-bom'
+    		}
 			mavenLocal()
 			jcenter()
 		}
