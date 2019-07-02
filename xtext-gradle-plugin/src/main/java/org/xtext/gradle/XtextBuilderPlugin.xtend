@@ -169,7 +169,7 @@ class XtextBuilderPlugin implements Plugin<Project> {
 						generatorTask.options.encoding = generatorTask.options.encoding ?: javaCompile.options.encoding
 						generatorTask.classpath = generatorTask.classpath ?: javaSourceSet.compileClasspath
 						generatorTask.bootstrapClasspath = generatorTask.bootstrapClasspath ?: javaCompile.options.bootstrapClasspath
-						generatorTask.classesDirs = generatorTask.classesDirs ?: javaSourceSet.output.classesDirs
+						generatorTask.classesDirs = generatorTask.classesDirs ?: javaSourceSet.output.dirs
 					]
 				]
 			]
