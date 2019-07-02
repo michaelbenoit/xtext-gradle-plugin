@@ -18,6 +18,7 @@ import org.xtext.gradle.XtextBuilderPlugin
 import org.xtext.gradle.XtextJavaLanguagePlugin
 import org.xtext.gradle.tasks.XtextExtension
 import org.xtext.gradle.tasks.XtextGenerate
+import org.gradle.api.tasks.compile.JavaCompile
 
 class XtextAndroidBuilderPlugin implements Plugin<Project> {
 
@@ -78,7 +79,7 @@ class XtextAndroidBuilderPlugin implements Plugin<Project> {
 			generatorTask.dependsOn(variant.outputs.map[processResources])
 			variant.javaCompiler.doLast(new Action<Task>() {
 				override void execute(Task it) {
-					generatorTask.installDebugInfo()
+					generatorTask.installDebugInfo((variant.javaCompiler as JavaCompile).destinationDir)
 				}
 			})
 			val sourceDirs = newArrayList
@@ -97,7 +98,6 @@ class XtextAndroidBuilderPlugin implements Plugin<Project> {
 				generatorTask.classpath = compile.classpath.plus(
 						project.files(android.bootClasspath)
 				)
-				generatorTask.classesDirs = project.files(compile.destinationDir)
 				generatorTask.options.encoding = android.compileOptions.encoding
 				variant.registerJavaGeneratingTask(generatorTask, generatorTask.outputDirectories)
 			} else {

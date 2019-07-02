@@ -23,10 +23,11 @@ import org.xtext.gradle.tasks.XtextClasspathInferrer
 import org.xtext.gradle.tasks.XtextEclipseSettings
 import org.xtext.gradle.tasks.XtextExtension
 import org.xtext.gradle.tasks.XtextGenerate
+import org.xtext.gradle.tasks.XtextSourceDirectorySet
+
+import static org.xtext.gradle.XtextBuilderPluginVersion.*
 
 import static extension org.xtext.gradle.GradleExtensions.*
-import static org.xtext.gradle.XtextBuilderPluginVersion.*
-import org.xtext.gradle.tasks.XtextSourceDirectorySet
 
 class XtextBuilderPlugin implements Plugin<Project> {
 
@@ -162,14 +163,13 @@ class XtextBuilderPlugin implements Plugin<Project> {
 							javaCompile.dependsOn(generatorTask)
 							javaCompile.doLast(new Action<Task>() {
 								override void execute(Task it) {
-									generatorTask.installDebugInfo()
+									generatorTask.installDebugInfo(javaCompile.destinationDir)
 								}
 							})
 						}
 						generatorTask.options.encoding = generatorTask.options.encoding ?: javaCompile.options.encoding
 						generatorTask.classpath = generatorTask.classpath ?: javaSourceSet.compileClasspath
 						generatorTask.bootstrapClasspath = generatorTask.bootstrapClasspath ?: javaCompile.options.bootstrapClasspath
-						generatorTask.classesDirs = generatorTask.classesDirs ?: javaSourceSet.output.classesDirs
 					]
 				]
 			]
