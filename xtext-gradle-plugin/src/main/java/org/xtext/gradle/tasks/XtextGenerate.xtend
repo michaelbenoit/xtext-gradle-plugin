@@ -39,6 +39,7 @@ class XtextGenerate extends DefaultTask {
 	@Accessors @Input @Optional FileCollection bootstrapClasspath
 
 	@Accessors @Input @Optional FileCollection classesDirs
+	@Accessors @Optional FileCollection classesDirsInternal
 
 	@Accessors XtextSourceSetOutputs sourceSetOutputs
 
@@ -153,7 +154,7 @@ class XtextGenerate extends DefaultTask {
 		}
 		val request = new GradleInstallDebugInfoRequest => [
 			generatedJavaFiles = generatedFiles.filter[name.endsWith(".java")].toSet
-			it.classesDirs = classesDirs
+			it.classesDirs = classesDirsInternal
 			sourceInstallerByFileExtension = languages.toMap[fileExtension].mapValues[lang|
 				new GradleSourceInstallerConfig() => [
 					sourceInstaller = lang.debugger.sourceInstaller

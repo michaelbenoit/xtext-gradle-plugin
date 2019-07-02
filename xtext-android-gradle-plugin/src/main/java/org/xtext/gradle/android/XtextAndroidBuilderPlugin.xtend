@@ -97,7 +97,7 @@ class XtextAndroidBuilderPlugin implements Plugin<Project> {
 				generatorTask.classpath = compile.classpath.plus(
 						project.files(android.bootClasspath)
 				)
-				generatorTask.classesDirs = project.files(compile.destinationDir)
+				generatorTask.classesDirsInternal = project.files(compile.destinationDir)
 				generatorTask.options.encoding = android.compileOptions.encoding
 				variant.registerJavaGeneratingTask(generatorTask, generatorTask.outputDirectories)
 			} else {
