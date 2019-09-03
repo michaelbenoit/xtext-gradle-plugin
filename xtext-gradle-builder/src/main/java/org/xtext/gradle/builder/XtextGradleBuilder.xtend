@@ -251,6 +251,7 @@ class XtextGradleBuilder implements IncrementalXtextBuilder {
 				outputConfigs.map[gradleOutputConfig|
 					new OutputConfiguration(gradleOutputConfig.outletName) => [
 						outputDirectory = gradleOutputConfig.target.absolutePath
+						overrideExistingResources = gradleOutputConfig.overrideExistingResources
 					]
 				].toSet
 			]

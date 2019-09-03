@@ -209,6 +209,7 @@ class Outlet implements Named {
 	val String name
 	boolean producesJava = false
 	boolean cleanAutomatically = false
+	boolean overrideExistingResources = true
 
 	def getFolderFragment() {
 		if (name == Outlet.DEFAULT_OUTLET) {

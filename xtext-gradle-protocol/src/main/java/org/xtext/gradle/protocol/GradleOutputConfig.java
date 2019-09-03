@@ -6,6 +6,7 @@ public class GradleOutputConfig {
 	private String outletName;
 	private File target;
 	private boolean cleanAutomatically;
+	private boolean overrideExistingResources;
 
 	public String getOutletName() {
 		return outletName;
@@ -30,4 +31,13 @@ public class GradleOutputConfig {
 	public void setCleanAutomatically(boolean cleanAutomatically) {
 		this.cleanAutomatically = cleanAutomatically;
 	}
+
+	public boolean isOverrideExistingResources() {
+		return overrideExistingResources;
+	}
+
+	public void setOverrideExistingResources(boolean overrideExistingResources) {
+		this.overrideExistingResources = overrideExistingResources;
+	}
+	
 }
